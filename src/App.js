@@ -37,12 +37,12 @@ function App() {
     return transactionGroup
   }, {})
 
-  console.log(monthlyTransactions)
+  console.log('monthlyTransactions:', monthlyTransactions)
 
   return (
     <div className="App">
       <h1>Data Manipulation Tests</h1>
-      <h4>New Leader:</h4>
+      {/* <h4>New Leader:</h4>
       { updatePersons.filter(p => p.designation == 'lead').map(p => p.name) }
 
       <h4>Senior Associates:</h4>
@@ -50,7 +50,7 @@ function App() {
         return (
           <p>{emp.name}</p>
         )
-        })}
+        })} */}
      
       <h4>Transactions:</h4>
       { Object.keys(monthlyTransactions).map((monthYear, i) => {
