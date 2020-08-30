@@ -4,9 +4,9 @@ import './App.css';
 // DATA FILES
 import personObjects from './components/personObjects.js';
 import employees from './components/employees.js';
-import fruit from './components/fruits.js';
 import transactions from './components/transactions.js';
 import blogs from './components/blogs.js';
+import fruit from './components/fruit.js';
 
 function App() {
   // Some examples from https://codesquery.com/javascript-array-method-map-filter-and-reduce/
@@ -15,10 +15,14 @@ function App() {
   // FILTER
   const seniorAssociates = employees.filter(emp => emp.group == 'senior associate')
   // REDUCE from https://medium.com/nona-web/understanding-javascript-reduce-and-its-use-cases-49a89d3aaa80
-  const fruitTally = fruit.reduce((currentTally, currentFruit) => {
-    currentTally[currentFruit] = (currentTally[currentFruit] || 0) + 1
-    return currentTally
+  const fruitCount = fruit.reduce((accumulator, fruit) => {
+    accumulator[fruit] = (accumulator[fruit] || 0) + 1
+    return accumulator
   }, {})
+
+  const comments = blogs.reduce((accumulator, blog) => {
+    return accumulator.concat(blog.comments) // merge each comments array into the accumulator
+  }, [])
 
   transactions.sort((a, b) => b - a) // sort in descending order
 
@@ -38,8 +42,6 @@ function App() {
     return transactionGroup
   }, {})
 
-  console.log('monthlyTransactions:', monthlyTransactions)
-
   return (
     <div className="App">
       <h1>Data Manipulation Tests</h1>
@@ -51,7 +53,7 @@ function App() {
         return (
           <p>{emp.name}</p>
         )
-        })} */}
+        })}
      
       <h4>Transactions:</h4>
       { Object.keys(monthlyTransactions).map((monthYear, i) => {
@@ -59,7 +61,12 @@ function App() {
             <p>{monthYear}</p>
           )
         }) 
-      }
+      } */}
+      { comments.map((comm, i) => {
+        return (
+          <p key={i}>{comm}</p>
+        )
+      })}
     </div>
   );
 }
