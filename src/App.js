@@ -6,6 +6,7 @@ import personObjects from './components/personObjects.js';
 import employees from './components/employees.js';
 import fruit from './components/fruits.js';
 import transactions from './components/transactions.js';
+import blogs from './components/blogs.js';
 
 function App() {
   // Some examples from https://codesquery.com/javascript-array-method-map-filter-and-reduce/
